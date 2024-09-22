@@ -41,7 +41,7 @@ def clean_body_content(body_content):
         script_or_style.extract() # remove those tags
 
     clean_content = soup.get_text(separator="\n") # separate the text where those tags were removed with a newline
-    cleaned_content = "\n".join(line.strip() for line in cleaned_content.splitlines() if line.strip()) # removes newlines that are unnecessary which mostly occurs when one grabs or scrapes content online.  This basically means that if there is no text between the \n and the next thing, just remove the newline
+    cleaned_content = "\n".join(line.strip() for line in clean_content.splitlines() if line.strip()) # removes newlines that are unnecessary which mostly occurs when one grabs or scrapes content online.  This basically means that if there is no text between the \n and the next thing, just remove the newline
 
     return cleaned_content
 
