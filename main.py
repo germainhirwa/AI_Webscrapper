@@ -6,6 +6,8 @@ from scrape import (
     extract_body_content,
 )
 
+from parse import parse_with_ollama
+
 # The streamlit UI
 st.title("GermAI Web Scraper")
 url = st.text_input("Enter a Website URL: ")
@@ -32,4 +34,7 @@ if "dom_content" in st.session_state:
             st.write("Parsing the content")
 
             dom_chunks = split_dom_content(st.session_state.dom_content)
-            # Then I have to pass the chunks and the prompt into the llm and then write the result
+            # Then I have to pass the chunks and the prompt into the llm to be parsed and then write the result
+            result = parse_with_ollama(dom_chunks, parse_description) # parsing with ollama's llama3.1 model which has 8B parameters
+
+            st.write(result) # Then write the results
